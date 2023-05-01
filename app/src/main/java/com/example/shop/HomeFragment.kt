@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +20,7 @@ import com.example.shop.room_db.ProductViewModel
 
 class HomeFragment : Fragment() {
 
-    private lateinit var mProductViewModel : ProductViewModel
+    private lateinit var mProductViewModel: ProductViewModel
     private lateinit var recyclerView: RecyclerView
     private var nameList: ArrayList<String> = ArrayList()
     private var priceList: ArrayList<String> = ArrayList()
@@ -41,18 +43,20 @@ class HomeFragment : Fragment() {
         recyclerAdapter = RecyclerAdapter(nameList, priceList, imageList, requireContext())
         recyclerView.adapter = recyclerAdapter
 
+        val addBtn = rootView.findViewById<Button>(R.id.addBtn)
+        kotlin.run {
+            addBtn.setOnClickListener {
+                insertDataToDatabase()
+            }
+        }
+
         return rootView
     }
 
-    override fun onStop() {
-        super.onStop()
-        insertDataToDatabase()
-    }
     private fun insertDataToDatabase() {
-
-
         val product = Product(1, "nameList", "priceList", R.drawable.home)
 
         mProductViewModel.addProduct(product)
+        Toast.makeText(requireContext(), "product is saved", Toast.LENGTH_SHORT).show()
     }
 }

@@ -3,7 +3,9 @@ package com.example.shop.room_db
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ProductViewModel(application: Application) : AndroidViewModel(application) {
     private val readAllData: LiveData<List<Product>>
@@ -16,6 +18,8 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
     }
 
     fun addProduct(product: Product) {
-        repository.addProduct(product)
+        viewModelScope.launch(Dispatchers.IO){
+            repository.addProduct(product)
+        }
     }
 }

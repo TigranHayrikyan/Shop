@@ -2,11 +2,7 @@ package com.example.shop
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.liked -> {
-                    loadFragment(LikedProductsFragment())
+                    loadFragment(BookmarksFragment())
                     true
                 }
 

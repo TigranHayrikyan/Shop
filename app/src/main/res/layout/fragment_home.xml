@@ -2,9 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -17,11 +16,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_product"/>
 
-    <Button
-        android:id="@+id/addBtn"
+    <TextView
+        android:id="@+id/emptyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
-
+        android:text="@string/empty_list"
+        android:textSize="26sp"
+        android:visibility="gone"
+        android:layout_gravity="center" />
 
 </FrameLayout>

@@ -11,15 +11,14 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shop.Adapters.BasketAdapter
+import com.example.shop.Adapters.BookmarksAdapter
+import com.example.shop.Adapters.HomeAdapter
 import com.example.shop.room_db.Product
 import com.example.shop.room_db.ProductViewModel
 
-class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
+class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
 
     private lateinit var mProductViewModel: ProductViewModel
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +29,7 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_liked_products, container, false)
-        val adapter = BasketAdapter(object : BasketAdapter.OnItemClickListener {
+        val adapter = BookmarksAdapter(object : BookmarksAdapter.OnItemClickListener {
             override fun onItemClick(product: Product) {
                 deleteProductFromDb(product)
             }

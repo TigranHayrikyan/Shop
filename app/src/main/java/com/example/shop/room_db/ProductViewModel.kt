@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProductViewModel(application: Application) : AndroidViewModel(application) {
-    private val readAllData: LiveData<List<Product>>
+    val readAllData: LiveData<List<Product>>
     private val repository: ProductRepository
 
     init {
@@ -20,6 +20,11 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
     fun addProduct(product: Product) {
         viewModelScope.launch(Dispatchers.IO){
             repository.addProduct(product)
+        }
+    }
+    fun deleteProduct(product: Product) {
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteProduct(product)
         }
     }
 }

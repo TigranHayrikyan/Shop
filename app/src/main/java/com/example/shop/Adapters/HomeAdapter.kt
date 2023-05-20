@@ -8,7 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.R
-import com.example.shop.room_db.Product
+import com.example.shop.room_db.product_basket.ProductBasket
+import com.example.shop.room_db.product_bookmark.Product
 
 class HomeAdapter(
     idList: ArrayList<Int>,
@@ -20,7 +21,8 @@ class HomeAdapter(
 ) : RecyclerView.Adapter<HomeAdapter.ItemViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick(product: Product)
+        fun onItemClick(productBookmark: Product)
+        fun onBasketItemClick(productBasket: ProductBasket)
     }
 
     private var idList: ArrayList<Int> = idList
@@ -39,10 +41,13 @@ class HomeAdapter(
         var shopBasket: ImageView = itemView.findViewById(R.id.shop_basket)
 
 
-        fun bind(product: Product, onItemClickListener: OnItemClickListener) {
-            onItemClickListener.onItemClick(product)
+        fun bind(productBookmark: Product, onItemClickListener: OnItemClickListener) {
+            onItemClickListener.onItemClick(productBookmark)
         }
 
+        fun bindBasket(productBasket: ProductBasket, onItemClickListener: OnItemClickListener) {
+            onItemClickListener.onBasketItemClick(productBasket)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -55,13 +60,16 @@ class HomeAdapter(
         holder.title.text = nameList[position]
         holder.price.text = priceList[position]
         holder.imageView.setImageResource(imageList[position])
-        val product =
+        val productBookmark =
             Product(idList[position], nameList[position], priceList[position], imageList[position])
         holder.bookmark.setOnClickListener {
-            holder.bind(product, onItemClickListener)
+            holder.bind(productBookmark, onItemClickListener)
         }
+
+        val productBasket =
+            ProductBasket(idList[position], nameList[position], priceList[position], imageList[position])
         holder.shopBasket.setOnClickListener {
-            holder.bind(product, onItemClickListener)
+            holder.bindBasket(productBasket, onItemClickListener)
         }
 
     }

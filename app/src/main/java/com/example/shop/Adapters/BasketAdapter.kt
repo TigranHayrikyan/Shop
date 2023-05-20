@@ -7,17 +7,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.R
-import com.example.shop.room_db.Product
+import com.example.shop.room_db.product_basket.ProductBasket
+import com.example.shop.room_db.product_bookmark.Product
 
 class BasketAdapter(
     private var onItemClickListener: OnItemClickListener
 
 ) : RecyclerView.Adapter<BasketAdapter.MyViewHolder>() {
 
-    private var productList = emptyList<Product>()
+    private var productBookmarkList = emptyList<ProductBasket>()
 
     interface OnItemClickListener {
-        fun onItemClick(product: Product)
+        fun onItemClick(productBasket: ProductBasket)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,8 +26,8 @@ class BasketAdapter(
         var price: TextView = itemView.findViewById(R.id.itemPrice)
         var imageView: ImageView = itemView.findViewById(R.id.itemImageView)
         var shopBasket: ImageView = itemView.findViewById(R.id.shop_basket)
-        fun bind(product: Product, onItemClickListener: OnItemClickListener) {
-            onItemClickListener.onItemClick(product)
+        fun bind(productBasket: ProductBasket, onItemClickListener: OnItemClickListener) {
+            onItemClickListener.onItemClick(productBasket)
         }
     }
 
@@ -37,11 +38,11 @@ class BasketAdapter(
     }
 
     override fun getItemCount(): Int {
-        return productList.size
+        return productBookmarkList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentProduct = productList[position]
+        val currentProduct = productBookmarkList[position]
         holder.title.text = currentProduct.nameList
         holder.price.text = currentProduct.priceList
         holder.imageView.setImageResource(currentProduct.imageList)
@@ -51,8 +52,8 @@ class BasketAdapter(
         }
     }
 
-    fun setData(product: List<Product>) {
-        this.productList = product
+    fun setData(productBasket: List<ProductBasket>) {
+        this.productBookmarkList = productBasket
         notifyDataSetChanged()
     }
 }

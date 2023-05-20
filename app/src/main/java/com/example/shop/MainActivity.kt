@@ -3,6 +3,9 @@ package com.example.shop
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.shop.framgents.BasketFragment
+import com.example.shop.framgents.BookmarksFragment
+import com.example.shop.framgents.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

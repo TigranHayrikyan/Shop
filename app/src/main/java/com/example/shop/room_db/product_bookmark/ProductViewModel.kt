@@ -1,4 +1,4 @@
-package com.example.shop.room_db
+package com.example.shop.room_db.product_bookmark
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -17,14 +17,14 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
         readAllData = repository.readAllData
     }
 
-    fun addProduct(product: Product) {
+    fun addProduct(productBookmark: Product) {
         viewModelScope.launch(Dispatchers.IO){
-            repository.addProduct(product)
+            repository.addProduct(productBookmark)
         }
     }
-    fun deleteProduct(product: Product) {
+    fun deleteProduct(productBookmark: Product) {
         viewModelScope.launch(Dispatchers.IO){
-            repository.deleteProduct(product)
+            repository.deleteProduct(productBookmark)
         }
     }
 }

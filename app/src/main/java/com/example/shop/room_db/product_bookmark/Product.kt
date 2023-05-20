@@ -1,4 +1,4 @@
-package com.example.shop.room_db
+package com.example.shop.room_db.product_bookmark
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

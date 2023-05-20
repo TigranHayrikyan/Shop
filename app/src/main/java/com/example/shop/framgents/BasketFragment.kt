@@ -1,4 +1,4 @@
-package com.example.shop
+package com.example.shop.framgents
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,12 +12,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.Adapters.BasketAdapter
-import com.example.shop.room_db.Product
-import com.example.shop.room_db.ProductViewModel
+import com.example.shop.R
+import com.example.shop.room_db.product_basket.ProductBasket
+import com.example.shop.room_db.product_basket.ProductBasketViewModel
+import com.example.shop.room_db.product_bookmark.Product
+import com.example.shop.room_db.product_bookmark.ProductViewModel
 
 class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
 
-    private lateinit var mProductViewModel: ProductViewModel
+    private lateinit var mProductViewModel: ProductBasketViewModel
 
 
 
@@ -31,12 +34,12 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_liked_products, container, false)
         val adapter = BasketAdapter(object : BasketAdapter.OnItemClickListener {
-            override fun onItemClick(product: Product) {
-                deleteProductFromDb(product)
+            override fun onItemClick(productBasket: ProductBasket) {
+                deleteProductFromDb(productBasket)
             }
 
-            private fun deleteProductFromDb(product: Product) {
-                mProductViewModel.deleteProduct(product)
+            private fun deleteProductFromDb(productBasket: ProductBasket) {
+                mProductViewModel.deleteProduct(productBasket)
             }
         })
         val recyclerView: RecyclerView = rootView.findViewById(R.id.recyclerView)
@@ -44,14 +47,14 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
         val emptyTextView = view?.rootView?.findViewById<TextView>(R.id.emptyTextView)
         emptyTextView?.isVisible = recyclerView.isEmpty()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mProductViewModel = ViewModelProvider(this)[ProductViewModel::class.java]
-        mProductViewModel.readAllData.observe(viewLifecycleOwner) { product ->
+        mProductViewModel = ViewModelProvider(this)[ProductBasketViewModel::class.java]
+        mProductViewModel.readAllBasketData.observe(viewLifecycleOwner) { product ->
             adapter.setData(product)
         }
 
         return rootView
     }
 
-    override fun onItemClick(product: Product) {
+    override fun onItemClick(productBasket: ProductBasket) {
     }
 }

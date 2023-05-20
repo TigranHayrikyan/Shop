@@ -1,4 +1,4 @@
-package com.example.shop
+package com.example.shop.framgents
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -14,13 +14,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.Adapters.HomeAdapter
 import com.example.shop.Adapters.HomeAdapter.OnItemClickListener
-import com.example.shop.room_db.Product
-import com.example.shop.room_db.ProductViewModel
+import com.example.shop.R
+import com.example.shop.room_db.product_basket.ProductBasket
+import com.example.shop.room_db.product_basket.ProductBasketViewModel
+import com.example.shop.room_db.product_bookmark.Product
+import com.example.shop.room_db.product_bookmark.ProductViewModel
 
 
 class HomeFragment : OnItemClickListener, Fragment() {
 
     private lateinit var mProductViewModel: ProductViewModel
+    private lateinit var basketProductViewModel: ProductBasketViewModel
     private lateinit var recyclerView: RecyclerView
     private var idList: ArrayList<Int> = ArrayList()
     private var nameList: ArrayList<String> = ArrayList()
@@ -35,6 +39,7 @@ class HomeFragment : OnItemClickListener, Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
         mProductViewModel = ViewModelProvider(this)[ProductViewModel::class.java]
+        basketProductViewModel = ViewModelProvider(this)[ProductBasketViewModel::class.java]
         recyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         isListEmpty()
@@ -49,8 +54,12 @@ class HomeFragment : OnItemClickListener, Fragment() {
         homeAdapter = HomeAdapter(idList,
             nameList, priceList, imageList,
             requireContext(), object : OnItemClickListener {
-                override fun onItemClick(product: Product) {
-                    insertDataToDatabase(product)
+                override fun onItemClick(productBookmark: Product) {
+                    insertDataToDatabase(productBookmark)
+                }
+
+                override fun onBasketItemClick(productBasket: ProductBasket) {
+                    insertBasketDataToDatabase(productBasket)
                 }
             }
         )
@@ -59,13 +68,18 @@ class HomeFragment : OnItemClickListener, Fragment() {
         return rootView
     }
 
-    private fun insertDataToDatabase(product: Product) {
-        mProductViewModel.addProduct(product)
+    private fun insertDataToDatabase(productBookmark: Product) {
+        mProductViewModel.addProduct(productBookmark)
+        Toast.makeText(requireContext(), "product is saved", Toast.LENGTH_SHORT).show()
+    }
+    private fun insertBasketDataToDatabase(productBasket: ProductBasket) {
+        basketProductViewModel.addProduct(productBasket)
         Toast.makeText(requireContext(), "product is saved", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onItemClick(product: Product) {
-    }
+    override fun onItemClick(productBookmark: Product) {}
+
+    override fun onBasketItemClick(productBasket: ProductBasket) {}
 
     private fun isListEmpty(){
         val emptyTextView = view?.rootView?.findViewById<TextView>(R.id.emptyTextView)

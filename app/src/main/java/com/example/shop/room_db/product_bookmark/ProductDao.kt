@@ -1,4 +1,4 @@
-package com.example.shop.room_db
+package com.example.shop.room_db.product_bookmark
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -11,13 +11,13 @@ import androidx.room.Update
 @Dao
 interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(product: Product)
+    fun insert(productBookmark: Product)
 
     @Update
-    fun update(product: Product)
+    fun update(productBookmark: Product)
 
     @Delete
-    fun delete(product: Product)
+    fun delete(productBookmark: Product)
 
     @Query("SELECT * FROM product_table ORDER BY id ASC")
     fun getAllProducts() : LiveData<List<Product>>

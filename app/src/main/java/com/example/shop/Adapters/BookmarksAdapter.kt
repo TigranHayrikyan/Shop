@@ -6,20 +6,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.util.convertUUIDToByte
-import com.example.shop.BookmarksFragment
 import com.example.shop.R
-import com.example.shop.room_db.Product
+import com.example.shop.room_db.product_bookmark.Product
 
 class BookmarksAdapter(
     onItemClickListener: OnItemClickListener
 
 ) : RecyclerView.Adapter<BookmarksAdapter.MyViewHolder>() {
     interface OnItemClickListener {
-        fun onItemClick(product: Product)
+        fun onItemClick(productBookmark: Product)
     }
 
-    private var productList = emptyList<Product>()
+    private var productBookmarkList = emptyList<Product>()
     private var onItemClickListener: OnItemClickListener = onItemClickListener
 
 
@@ -28,8 +26,8 @@ class BookmarksAdapter(
         var price: TextView = itemView.findViewById(R.id.itemPrice)
         var imageView: ImageView = itemView.findViewById(R.id.itemImageView)
         var bookmark: ImageView = itemView.findViewById(R.id.bookmark)
-        fun bind(product: Product, onItemClickListener: OnItemClickListener) {
-            onItemClickListener.onItemClick(product)
+        fun bind(productBookmark: Product, onItemClickListener: OnItemClickListener) {
+            onItemClickListener.onItemClick(productBookmark)
 
         }
 
@@ -42,11 +40,11 @@ class BookmarksAdapter(
     }
 
     override fun getItemCount(): Int {
-        return productList.size
+        return productBookmarkList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentProduct = productList[position]
+        val currentProduct = productBookmarkList[position]
         holder.title.text = currentProduct.nameList
         holder.price.text = currentProduct.priceList
         holder.imageView.setImageResource(currentProduct.imageList)
@@ -56,8 +54,8 @@ class BookmarksAdapter(
         }
     }
 
-    fun setData(product: List<Product>) {
-        this.productList = product
+    fun setData(productBookmark: List<Product>) {
+        this.productBookmarkList = productBookmark
         notifyDataSetChanged()
     }
 }

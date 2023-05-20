@@ -1,4 +1,4 @@
-package com.example.shop
+package com.example.shop.framgents
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,9 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.Adapters.BookmarksAdapter
-import com.example.shop.Adapters.HomeAdapter
-import com.example.shop.room_db.Product
-import com.example.shop.room_db.ProductViewModel
+import com.example.shop.R
+import com.example.shop.room_db.product_bookmark.Product
+import com.example.shop.room_db.product_bookmark.ProductViewModel
 
 class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
 
@@ -30,12 +30,12 @@ class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_liked_products, container, false)
         val adapter = BookmarksAdapter(object : BookmarksAdapter.OnItemClickListener {
-            override fun onItemClick(product: Product) {
-                deleteProductFromDb(product)
+            override fun onItemClick(productBookmark: Product) {
+                deleteProductFromDb(productBookmark)
             }
 
-            private fun deleteProductFromDb(product: Product) {
-                mProductViewModel.deleteProduct(product)
+            private fun deleteProductFromDb(productBookmark: Product) {
+                mProductViewModel.deleteProduct(productBookmark)
             }
         })
         val recyclerView: RecyclerView = rootView.findViewById(R.id.recyclerView)
@@ -51,6 +51,6 @@ class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
         return rootView
     }
 
-    override fun onItemClick(product: Product) {
+    override fun onItemClick(productBookmark: Product) {
     }
 }

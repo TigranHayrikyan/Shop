@@ -83,6 +83,6 @@ class HomeFragment : OnItemClickListener, Fragment() {
 
     private fun isListEmpty(){
         val emptyTextView = view?.rootView?.findViewById<TextView>(R.id.emptyTextView)
-        emptyTextView?.isVisible = idList.isEmpty()
+        emptyTextView?.isVisible = homeAdapter.itemCount != null
     }
 }

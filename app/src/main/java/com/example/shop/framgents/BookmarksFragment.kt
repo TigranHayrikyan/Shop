@@ -1,6 +1,7 @@
 package com.example.shop.framgents
 
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,8 @@ import com.example.shop.room_db.product_bookmark.ProductViewModel
 class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
 
     private lateinit var mProductViewModel: ProductViewModel
+    private lateinit var adapter : BookmarksAdapter
+    private lateinit var emptyTextView : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +32,8 @@ class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_liked_products, container, false)
-        val adapter = BookmarksAdapter(object : BookmarksAdapter.OnItemClickListener {
+        emptyTextView = rootView.findViewById(R.id.emptyTextView)
+        adapter = BookmarksAdapter(object : BookmarksAdapter.OnItemClickListener {
             override fun onItemClick(productBookmark: Product) {
                 deleteProductFromDb(productBookmark)
             }
@@ -38,6 +42,7 @@ class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
                 mProductViewModel.deleteProduct(productBookmark)
             }
         })
+        isListEmpty()
         val recyclerView: RecyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.adapter = adapter
         val emptyTextView = view?.rootView?.findViewById<TextView>(R.id.emptyTextView)
@@ -52,5 +57,11 @@ class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
     }
 
     override fun onItemClick(productBookmark: Product) {
+    }
+
+    private fun isListEmpty(){
+        if (adapter.itemCount == 0){
+            emptyTextView.isVisible = true
+        }
     }
 }

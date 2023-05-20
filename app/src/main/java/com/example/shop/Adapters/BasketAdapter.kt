@@ -1,10 +1,12 @@
 package com.example.shop.Adapters
 
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.R
 import com.example.shop.room_db.product_basket.ProductBasket
@@ -26,6 +28,7 @@ class BasketAdapter(
         var price: TextView = itemView.findViewById(R.id.itemPrice)
         var imageView: ImageView = itemView.findViewById(R.id.itemImageView)
         var shopBasket: ImageView = itemView.findViewById(R.id.shop_basket)
+        val bookmark: ImageView = itemView.findViewById(R.id.bookmark)
         fun bind(productBasket: ProductBasket, onItemClickListener: OnItemClickListener) {
             onItemClickListener.onItemClick(productBasket)
         }
@@ -46,6 +49,7 @@ class BasketAdapter(
         holder.title.text = currentProduct.nameList
         holder.price.text = currentProduct.priceList
         holder.imageView.setImageResource(currentProduct.imageList)
+        holder.bookmark.isVisible = false
         holder.shopBasket.setImageResource(R.drawable.red_basket)
         holder.shopBasket.setOnClickListener {
             holder.bind(currentProduct, onItemClickListener)

@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.R
 import com.example.shop.room_db.product_bookmark.Product
@@ -26,6 +27,7 @@ class BookmarksAdapter(
         var price: TextView = itemView.findViewById(R.id.itemPrice)
         var imageView: ImageView = itemView.findViewById(R.id.itemImageView)
         var bookmark: ImageView = itemView.findViewById(R.id.bookmark)
+        val basket: ImageView = itemView.findViewById(R.id.shop_basket)
         fun bind(productBookmark: Product, onItemClickListener: OnItemClickListener) {
             onItemClickListener.onItemClick(productBookmark)
 
@@ -49,6 +51,7 @@ class BookmarksAdapter(
         holder.price.text = currentProduct.priceList
         holder.imageView.setImageResource(currentProduct.imageList)
         holder.bookmark.setImageResource(R.drawable.red_heart)
+        holder.basket.isVisible = false
         holder.bookmark.setOnClickListener {
             holder.bind(currentProduct, onItemClickListener)
         }

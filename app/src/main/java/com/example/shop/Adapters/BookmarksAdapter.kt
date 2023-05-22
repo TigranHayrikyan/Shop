@@ -30,9 +30,7 @@ class BookmarksAdapter(
         val basket: ImageView = itemView.findViewById(R.id.shop_basket)
         fun bind(productBookmark: Product, onItemClickListener: OnItemClickListener) {
             onItemClickListener.onItemClick(productBookmark)
-
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -50,7 +48,6 @@ class BookmarksAdapter(
         holder.title.text = currentProduct.nameList
         holder.price.text = currentProduct.priceList
         holder.imageView.setImageResource(currentProduct.imageList)
-        holder.bookmark.setImageResource(R.drawable.red_heart)
         holder.basket.isVisible = false
         holder.bookmark.setOnClickListener {
             holder.bind(currentProduct, onItemClickListener)

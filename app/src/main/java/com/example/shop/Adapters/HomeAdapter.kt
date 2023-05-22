@@ -67,11 +67,15 @@ class HomeAdapter(
         }
 
         val productBasket =
-            ProductBasket(idList[position], nameList[position], priceList[position], imageList[position])
+            ProductBasket(
+                idList[position],
+                nameList[position],
+                priceList[position],
+                imageList[position]
+            )
         holder.shopBasket.setOnClickListener {
             holder.bindBasket(productBasket, onItemClickListener)
         }
-
     }
 
     override fun getItemCount(): Int {

@@ -2,13 +2,10 @@ package com.example.shop.framgents
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,13 +40,9 @@ class HomeFragment : OnItemClickListener, Fragment() {
         recyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         idList.add(1)
-        nameList.add("Name: Banana")
-        priceList.add("Price: 10$")
-        imageList.add(R.drawable.banana)
-        idList.add(2)
-        nameList.add("Name: Home")
-        priceList.add("Price: 1000$")
-        imageList.add(R.drawable.home)
+        nameList.add("Cappuccino")
+        priceList.add("$10")
+        imageList.add(R.drawable.img)
         homeAdapter = HomeAdapter(idList,
             nameList, priceList, imageList,
             requireContext(), object : OnItemClickListener {
@@ -69,11 +62,9 @@ class HomeFragment : OnItemClickListener, Fragment() {
 
     private fun insertDataToDatabase(productBookmark: Product) {
         mProductViewModel.addProduct(productBookmark)
-        Toast.makeText(requireContext(), "product is saved", Toast.LENGTH_SHORT).show()
     }
     private fun insertBasketDataToDatabase(productBasket: ProductBasket) {
         basketProductViewModel.addProduct(productBasket)
-        Toast.makeText(requireContext(), "product is saved", Toast.LENGTH_SHORT).show()
     }
 
     override fun onItemClick(productBookmark: Product) {}

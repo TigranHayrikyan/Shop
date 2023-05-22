@@ -50,7 +50,6 @@ class BasketAdapter(
         holder.price.text = currentProduct.priceList
         holder.imageView.setImageResource(currentProduct.imageList)
         holder.bookmark.isVisible = false
-        holder.shopBasket.setImageResource(R.drawable.red_basket)
         holder.shopBasket.setOnClickListener {
             holder.bind(currentProduct, onItemClickListener)
         }

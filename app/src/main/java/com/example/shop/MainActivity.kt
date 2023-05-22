@@ -2,6 +2,7 @@ package com.example.shop
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.shop.framgents.BasketFragment
 import com.example.shop.framgents.BookmarksFragment
@@ -14,9 +15,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
+        window.statusBarColor = (ContextCompat.getColor(this, R.color.background))
         loadFragment(HomeFragment())
+
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {

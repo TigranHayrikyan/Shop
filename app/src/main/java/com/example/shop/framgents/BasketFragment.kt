@@ -22,14 +22,12 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
 
     private lateinit var mProductViewModel: ProductBasketViewModel
     private lateinit var  adapter : BasketAdapter
-    private lateinit var emptyTextView : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_liked_products, container, false)
-        emptyTextView = rootView.findViewById(R.id.emptyTextView)
         adapter = BasketAdapter(object : BasketAdapter.OnItemClickListener {
             override fun onItemClick(productBasket: ProductBasket) {
                 deleteProductFromDb(productBasket)
@@ -39,11 +37,8 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
                 mProductViewModel.deleteProduct(productBasket)
             }
         })
-        isListEmpty()
         val recyclerView: RecyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.adapter = adapter
-        val emptyTextView = view?.rootView?.findViewById<TextView>(R.id.emptyTextView)
-        emptyTextView?.isVisible = recyclerView.isEmpty()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         mProductViewModel = ViewModelProvider(this)[ProductBasketViewModel::class.java]
         mProductViewModel.readAllBasketData.observe(viewLifecycleOwner) { product ->
@@ -54,11 +49,5 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
     }
 
     override fun onItemClick(productBasket: ProductBasket) {
-    }
-
-    private fun isListEmpty(){
-        if (adapter.itemCount == 0){
-            emptyTextView.isVisible = true
-        }
     }
 }

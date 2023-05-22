@@ -22,7 +22,7 @@ abstract class ProductBasketDatabase : RoomDatabase(){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ProductBasketDatabase::class.java,
-                    "product_database"
+                    "product_database_basket"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

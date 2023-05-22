@@ -24,5 +24,4 @@ interface ProductBasketDao {
 
     @Query("SELECT * FROM product_table_basket WHERE id LIKE :id")
     fun getProduct(id : Int) : ProductBasket
-
 }

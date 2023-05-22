@@ -42,7 +42,6 @@ class HomeFragment : OnItemClickListener, Fragment() {
         basketProductViewModel = ViewModelProvider(this)[ProductBasketViewModel::class.java]
         recyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        isListEmpty()
         idList.add(1)
         nameList.add("Name: Banana")
         priceList.add("Price: 10$")
@@ -80,9 +79,4 @@ class HomeFragment : OnItemClickListener, Fragment() {
     override fun onItemClick(productBookmark: Product) {}
 
     override fun onBasketItemClick(productBasket: ProductBasket) {}
-
-    private fun isListEmpty(){
-        val emptyTextView = view?.rootView?.findViewById<TextView>(R.id.emptyTextView)
-        emptyTextView?.isVisible = homeAdapter.itemCount != null
-    }
 }

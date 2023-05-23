@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.Adapters.HomeAdapter
@@ -38,8 +39,23 @@ class HomeFragment : OnItemClickListener, Fragment() {
         mProductViewModel = ViewModelProvider(this)[ProductViewModel::class.java]
         basketProductViewModel = ViewModelProvider(this)[ProductBasketViewModel::class.java]
         recyclerView = rootView.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         idList.add(1)
+        nameList.add("Cappuccino")
+        priceList.add("$10")
+        imageList.add(R.drawable.img)
+
+        idList.add(2)
+        nameList.add("Cappuccino")
+        priceList.add("$10")
+        imageList.add(R.drawable.img)
+
+        idList.add(3)
+        nameList.add("Cappuccino")
+        priceList.add("$10")
+        imageList.add(R.drawable.img)
+
+        idList.add(4)
         nameList.add("Cappuccino")
         priceList.add("$10")
         imageList.add(R.drawable.img)

@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.Adapters.BookmarksAdapter
@@ -42,7 +43,7 @@ class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
         })
         val recyclerView: RecyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         mProductViewModel = ViewModelProvider(this)[ProductViewModel::class.java]
         mProductViewModel.readAllData.observe(viewLifecycleOwner) { product ->
             adapter.setData(product)

@@ -1,8 +1,10 @@
 package com.example.shop.Adapters
 
+import android.animation.ValueAnimator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -46,7 +48,7 @@ class BookmarksAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentProduct = productBookmarkList[position]
         holder.title.text = currentProduct.nameList
-        holder.price.text = currentProduct.priceList
+        holder.price.text = currentProduct.priceList.toString()
         holder.imageView.setImageResource(currentProduct.imageList)
         holder.basket.isVisible = false
         holder.bookmark.setOnClickListener {

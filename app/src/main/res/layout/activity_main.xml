@@ -18,7 +18,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:background="#0C0F14"
+        android:background="@drawable/navbar_background"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_gravity="bottom"
@@ -28,5 +28,4 @@
         app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_navigation_bar"/>
-    
 </androidx.constraintlayout.widget.ConstraintLayout>

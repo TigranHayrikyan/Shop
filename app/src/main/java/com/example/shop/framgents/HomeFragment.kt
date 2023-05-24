@@ -1,10 +1,13 @@
 package com.example.shop.framgents
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,7 +29,7 @@ class HomeFragment : OnItemClickListener, Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var idList: ArrayList<Int> = ArrayList()
     private var nameList: ArrayList<String> = ArrayList()
-    private var priceList: ArrayList<String> = ArrayList()
+    private var priceList: ArrayList<Int> = ArrayList()
     private var imageList: ArrayList<Int> = ArrayList()
     private lateinit var homeAdapter: HomeAdapter
 
@@ -42,22 +45,22 @@ class HomeFragment : OnItemClickListener, Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         idList.add(1)
         nameList.add("Cappuccino")
-        priceList.add("$10")
+        priceList.add(10)
         imageList.add(R.drawable.img)
 
         idList.add(2)
         nameList.add("Cappuccino")
-        priceList.add("$10")
+        priceList.add(10)
         imageList.add(R.drawable.img)
 
         idList.add(3)
         nameList.add("Cappuccino")
-        priceList.add("$10")
+        priceList.add(10)
         imageList.add(R.drawable.img)
 
         idList.add(4)
         nameList.add("Cappuccino")
-        priceList.add("$10")
+        priceList.add(10)
         imageList.add(R.drawable.img)
         homeAdapter = HomeAdapter(idList,
             nameList, priceList, imageList,
@@ -79,6 +82,7 @@ class HomeFragment : OnItemClickListener, Fragment() {
     private fun insertDataToDatabase(productBookmark: Product) {
         mProductViewModel.addProduct(productBookmark)
     }
+
     private fun insertBasketDataToDatabase(productBasket: ProductBasket) {
         basketProductViewModel.addProduct(productBasket)
     }

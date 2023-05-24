@@ -1,10 +1,12 @@
 package com.example.shop.framgents
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
@@ -24,20 +26,13 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
     private lateinit var mProductViewModel: ProductBasketViewModel
     private lateinit var  adapter : BasketAdapter
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_liked_products, container, false)
-        adapter = BasketAdapter(object : BasketAdapter.OnItemClickListener {
-            override fun onItemClick(productBasket: ProductBasket) {
-                deleteProductFromDb(productBasket)
-            }
-
-            private fun deleteProductFromDb(productBasket: ProductBasket) {
-                mProductViewModel.deleteProduct(productBasket)
-            }
-        })
+        initAdapterConfigs()
         val recyclerView: RecyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -47,6 +42,18 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
         }
 
         return rootView
+    }
+
+    private fun initAdapterConfigs() {
+        adapter = BasketAdapter(object : BasketAdapter.OnItemClickListener {
+            override fun onItemClick(productBasket: ProductBasket) {
+                deleteProductFromDb(productBasket)
+            }
+
+            private fun deleteProductFromDb(productBasket: ProductBasket) {
+                mProductViewModel.deleteProduct(productBasket)
+            }
+        })
     }
 
     override fun onItemClick(productBasket: ProductBasket) {

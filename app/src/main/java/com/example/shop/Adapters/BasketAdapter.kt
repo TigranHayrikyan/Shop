@@ -17,7 +17,7 @@ class BasketAdapter(
 
 ) : RecyclerView.Adapter<BasketAdapter.MyViewHolder>() {
 
-    private var productBookmarkList = emptyList<ProductBasket>()
+    private var productBasketList = emptyList<ProductBasket>()
 
     interface OnItemClickListener {
         fun onItemClick(productBasket: ProductBasket)
@@ -41,13 +41,13 @@ class BasketAdapter(
     }
 
     override fun getItemCount(): Int {
-        return productBookmarkList.size
+        return productBasketList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentProduct = productBookmarkList[position]
+        val currentProduct = productBasketList[position]
         holder.title.text = currentProduct.nameList
-        holder.price.text = currentProduct.priceList
+        holder.price.text = currentProduct.priceList.toString()
         holder.imageView.setImageResource(currentProduct.imageList)
         holder.bookmark.isVisible = false
         holder.shopBasket.setOnClickListener {
@@ -56,7 +56,7 @@ class BasketAdapter(
     }
 
     fun setData(productBasket: List<ProductBasket>) {
-        this.productBookmarkList = productBasket
+        this.productBasketList = productBasket
         notifyDataSetChanged()
     }
 }

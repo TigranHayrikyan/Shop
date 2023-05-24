@@ -8,7 +8,7 @@ data class ProductBasket(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val nameList: String,
-    val priceList: String,
+    val priceList: Int,
     val imageList: Int
 )
 

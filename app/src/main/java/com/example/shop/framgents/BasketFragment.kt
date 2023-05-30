@@ -31,7 +31,7 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_liked_products, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_basket, container, false)
         initAdapterConfigs()
         val recyclerView: RecyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.adapter = adapter

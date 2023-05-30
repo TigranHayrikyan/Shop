@@ -1,75 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/totalFrame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_product"/>
+        tools:listitem="@layout/item_product"
+        android:layout_marginBottom="10dp"/>
 
     <FrameLayout
-        android:layout_height="80dp"
+        android:id="@+id/totalFrame"
         android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:background="@color/background"
-        android:layout_gravity="bottom">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textViewSum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textStyle="bold|italic"
-            android:layout_gravity="start|center"
-            android:textColor="@color/white"
-            android:text="@string/sum"
-            android:layout_marginStart="10dp"/>
-
-        <TextView
-            android:id="@+id/dollar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textStyle="bold|italic"
-            android:layout_gravity="start|center"
-            android:textColor="@color/custom_orange"
-            android:text="@string/dollar"
-            android:layout_marginStart="20dp"/>
-
             <TextView
-                android:id="@+id/sumSize"
+                android:id="@+id/textViewSum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center"
-                android:textSize="30sp"
-                android:textStyle="bold|italic"
+                android:layout_marginStart="10dp"
+                android:text="@string/sum"
                 android:textColor="@color/white"
-                android:layout_marginStart="5dp"/>
+                android:textSize="30sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/dollar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="20dp"
+                android:text="@string/dollar"
+                android:textColor="@color/custom_orange"
+                android:textSize="30sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/sumSize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold|italic" />
 
             <Button
                 android:id="@+id/buyBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold|italic"
-                android:textColor="@color/white"
-                android:text="@string/buy"
                 android:layout_gravity="end|center"
-                android:backgroundTint="@color/custom_orange"/>
+                android:backgroundTint="@color/custom_orange"
+                android:text="@string/buy"
+                android:textColor="@color/white"
+                android:textStyle="bold|italic" />
         </LinearLayout>
 
     </FrameLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

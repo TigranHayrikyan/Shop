@@ -8,4 +8,6 @@
     <string name="buy">BUY</string>
     <string name="dollar">$</string>
     <string name="sum">SUM:</string>
+    <string name="find_coffee_tv">Find the best coffee for you</string>
+    <string name="find_your_coffee">Find your coffee…</string>
 </resources>

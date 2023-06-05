@@ -2,24 +2,17 @@ package com.example.shop.framgents
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import androidx.core.view.isEmpty
-import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.Adapters.BasketAdapter
 import com.example.shop.R
 import com.example.shop.room_db.product_basket.ProductBasket
 import com.example.shop.room_db.product_basket.ProductBasketViewModel
-import com.example.shop.room_db.product_bookmark.Product
-import com.example.shop.room_db.product_bookmark.ProductViewModel
 
 class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
 

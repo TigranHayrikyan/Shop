@@ -28,7 +28,7 @@ class BasketFragment : BasketAdapter.OnItemClickListener, Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_basket, container, false)
         initAdapterConfigs()
-        var sumSize : TextView = rootView.findViewById(R.id.sumSize)
+        val sumSize : TextView = rootView.findViewById(R.id.sumSize)
         val buyBtn : Button = rootView.findViewById(R.id.buyBtn)
         val recyclerView: RecyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.adapter = adapter

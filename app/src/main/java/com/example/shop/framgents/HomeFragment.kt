@@ -41,12 +41,12 @@ class HomeFragment : OnItemClickListener, Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         idList.add(1)
         nameList.add("Cappuccino")
-        priceList.add(10)
+        priceList.add(20)
         imageList.add(R.drawable.img)
 
         idList.add(2)
         nameList.add("Cappuccino")
-        priceList.add(10)
+        priceList.add(30)
         imageList.add(R.drawable.img)
 
         idList.add(3)
@@ -56,7 +56,7 @@ class HomeFragment : OnItemClickListener, Fragment() {
 
         idList.add(4)
         nameList.add("Cappuccino")
-        priceList.add(10)
+        priceList.add(15)
         imageList.add(R.drawable.img)
         homeAdapter = HomeAdapter(idList,
             nameList, priceList, imageList,

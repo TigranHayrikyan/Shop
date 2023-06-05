@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,7 +26,7 @@ class BookmarksFragment : BookmarksAdapter.OnItemClickListener, Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_liked_products, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_bookmarks, container, false)
         adapter = BookmarksAdapter(object : BookmarksAdapter.OnItemClickListener {
             override fun onItemClick(productBookmark: Product) {
                 deleteProductFromDb(productBookmark)

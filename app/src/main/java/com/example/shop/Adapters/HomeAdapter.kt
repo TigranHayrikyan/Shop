@@ -1,28 +1,21 @@
 package com.example.shop.Adapters
 
-import android.animation.ValueAnimator
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.LinearInterpolator
-import android.view.animation.TranslateAnimation
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.R
 import com.example.shop.room_db.product_basket.ProductBasket
 import com.example.shop.room_db.product_bookmark.Product
+import com.google.android.material.snackbar.Snackbar
 
 class HomeAdapter(
     idList: ArrayList<Int>,
     nameList: ArrayList<String>,
     priceList: ArrayList<Int>,
     imageList: ArrayList<Int>,
-    context: Context,
     onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<HomeAdapter.ItemViewHolder>() {
 
@@ -68,6 +61,11 @@ class HomeAdapter(
             Product(idList[position], nameList[position], priceList[position], imageList[position])
         holder.bookmark.setOnClickListener {
             holder.bind(productBookmark, onItemClickListener)
+            holder.itemView.animate().apply {
+                duration = 1000
+                rotationYBy(360f)
+            }.start()
+            Snackbar.make(it, "Product added to Bookmark", Snackbar.LENGTH_SHORT).show()
         }
 
         val productBasket =
@@ -79,6 +77,12 @@ class HomeAdapter(
             )
         holder.shopBasket.setOnClickListener {
             holder.bindBasket(productBasket, onItemClickListener)
+            holder.itemView.animate().apply {
+                duration = 1000
+                rotationYBy(360f)
+            }.start()
+            Snackbar.make(it, "Product added to Basket", Snackbar.LENGTH_SHORT).show()
+
         }
     }
 

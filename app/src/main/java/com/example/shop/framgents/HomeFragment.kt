@@ -1,17 +1,13 @@
 package com.example.shop.framgents
 
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.Adapters.HomeAdapter
 import com.example.shop.Adapters.HomeAdapter.OnItemClickListener
@@ -45,12 +41,12 @@ class HomeFragment : OnItemClickListener, Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         idList.add(1)
         nameList.add("Cappuccino")
-        priceList.add(10)
+        priceList.add(20)
         imageList.add(R.drawable.img)
 
         idList.add(2)
         nameList.add("Cappuccino")
-        priceList.add(10)
+        priceList.add(30)
         imageList.add(R.drawable.img)
 
         idList.add(3)
@@ -60,11 +56,11 @@ class HomeFragment : OnItemClickListener, Fragment() {
 
         idList.add(4)
         nameList.add("Cappuccino")
-        priceList.add(10)
+        priceList.add(15)
         imageList.add(R.drawable.img)
         homeAdapter = HomeAdapter(idList,
             nameList, priceList, imageList,
-            requireContext(), object : OnItemClickListener {
+            object : OnItemClickListener {
                 override fun onItemClick(productBookmark: Product) {
                     insertDataToDatabase(productBookmark)
                 }

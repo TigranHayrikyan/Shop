@@ -1,6 +1,5 @@
-package com.example.shop.Adapters
+package com.example.shop.adapters
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +9,13 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.R
 import com.example.shop.room_db.product_basket.ProductBasket
-import com.example.shop.room_db.product_bookmark.Product
 
 class BasketAdapter(
     private var onItemClickListener: OnItemClickListener
 
 ) : RecyclerView.Adapter<BasketAdapter.MyViewHolder>() {
 
-    private var productBasketList = emptyList<ProductBasket>()
+    var productBasketList = emptyList<ProductBasket>()
 
     interface OnItemClickListener {
         fun onItemClick(productBasket: ProductBasket)

@@ -40,7 +40,7 @@
 
 
         <EditText
-            android:id="@+id/find_your_c"
+            android:id="@+id/searchEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"

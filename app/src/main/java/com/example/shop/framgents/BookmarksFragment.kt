@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shop.Adapters.BookmarksAdapter
+import com.example.shop.adapters.BookmarksAdapter
 import com.example.shop.R
 import com.example.shop.room_db.product_bookmark.Product
 import com.example.shop.room_db.product_bookmark.ProductViewModel
